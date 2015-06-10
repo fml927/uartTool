@@ -328,6 +328,11 @@ namespace 串口工具
                 "帮助");
         }
 
+        private void toolStripStatusLabel2_Click(object sender, EventArgs e)
+        {
+            
+        }
+
 
 
         

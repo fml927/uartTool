@@ -41,6 +41,7 @@
             this.bt_open = new System.Windows.Forms.Button();
             this.text_stop = new System.Windows.Forms.ComboBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.label6 = new System.Windows.Forms.Label();
             this.text_parity = new System.Windows.Forms.ComboBox();
             this.text_data = new System.Windows.Forms.ComboBox();
             this.text_baud = new System.Windows.Forms.ComboBox();
@@ -62,6 +63,9 @@
             this.panel4 = new System.Windows.Forms.Panel();
             this.panel1 = new System.Windows.Forms.Panel();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.groupBox6 = new System.Windows.Forms.GroupBox();
+            this.tb_record = new System.Windows.Forms.TextBox();
+            this.cb_record = new System.Windows.Forms.CheckBox();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
             this.cb_n = new System.Windows.Forms.CheckBox();
             this.cb_r = new System.Windows.Forms.CheckBox();
@@ -74,10 +78,6 @@
             this.hSerialPort = new System.IO.Ports.SerialPort(this.components);
             this.timer_send = new System.Windows.Forms.Timer(this.components);
             this.timer_ref = new System.Windows.Forms.Timer(this.components);
-            this.groupBox6 = new System.Windows.Forms.GroupBox();
-            this.cb_record = new System.Windows.Forms.CheckBox();
-            this.tb_record = new System.Windows.Forms.TextBox();
-            this.label6 = new System.Windows.Forms.Label();
             this.statusStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.text_com)).BeginInit();
             this.groupBox3.SuspendLayout();
@@ -92,10 +92,10 @@
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
+            this.groupBox6.SuspendLayout();
             this.groupBox5.SuspendLayout();
             this.groupBox4.SuspendLayout();
             this.panel2.SuspendLayout();
-            this.groupBox6.SuspendLayout();
             this.SuspendLayout();
             // 
             // statusStrip1
@@ -116,9 +116,11 @@
             // toolStripStatusLabel2
             // 
             this.toolStripStatusLabel2.IsLink = true;
+            this.toolStripStatusLabel2.LinkVisited = true;
             this.toolStripStatusLabel2.Name = "toolStripStatusLabel2";
             this.toolStripStatusLabel2.Size = new System.Drawing.Size(227, 17);
             this.toolStripStatusLabel2.Text = "http://www.github.com/fml927/uartTool";
+            this.toolStripStatusLabel2.Click += new System.EventHandler(this.toolStripStatusLabel2_Click);
             // 
             // toolStripStatusLabel3
             // 
@@ -218,6 +220,18 @@
             this.groupBox3.TabIndex = 3;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "串口设置";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label6.ForeColor = System.Drawing.SystemColors.ActiveCaption;
+            this.label6.Location = new System.Drawing.Point(204, 9);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(19, 14);
+            this.label6.TabIndex = 5;
+            this.label6.Text = "？";
+            this.label6.Click += new System.EventHandler(this.label6_Click);
             // 
             // text_parity
             // 
@@ -462,6 +476,35 @@
             this.splitContainer1.SplitterDistance = 704;
             this.splitContainer1.TabIndex = 1;
             // 
+            // groupBox6
+            // 
+            this.groupBox6.Controls.Add(this.tb_record);
+            this.groupBox6.Controls.Add(this.cb_record);
+            this.groupBox6.Location = new System.Drawing.Point(12, 266);
+            this.groupBox6.Name = "groupBox6";
+            this.groupBox6.Size = new System.Drawing.Size(200, 51);
+            this.groupBox6.TabIndex = 8;
+            this.groupBox6.TabStop = false;
+            this.groupBox6.Text = "接收数据自动写入到文件";
+            // 
+            // tb_record
+            // 
+            this.tb_record.Location = new System.Drawing.Point(60, 20);
+            this.tb_record.Name = "tb_record";
+            this.tb_record.Size = new System.Drawing.Size(134, 21);
+            this.tb_record.TabIndex = 7;
+            this.tb_record.Text = "record.txt";
+            // 
+            // cb_record
+            // 
+            this.cb_record.AutoSize = true;
+            this.cb_record.Location = new System.Drawing.Point(15, 23);
+            this.cb_record.Name = "cb_record";
+            this.cb_record.Size = new System.Drawing.Size(48, 16);
+            this.cb_record.TabIndex = 7;
+            this.cb_record.Text = "写入";
+            this.cb_record.UseVisualStyleBackColor = true;
+            // 
             // groupBox5
             // 
             this.groupBox5.Controls.Add(this.cb_n);
@@ -563,47 +606,6 @@
             this.timer_ref.Enabled = true;
             this.timer_ref.Tick += new System.EventHandler(this.timer_ref_Tick);
             // 
-            // groupBox6
-            // 
-            this.groupBox6.Controls.Add(this.tb_record);
-            this.groupBox6.Controls.Add(this.cb_record);
-            this.groupBox6.Location = new System.Drawing.Point(12, 266);
-            this.groupBox6.Name = "groupBox6";
-            this.groupBox6.Size = new System.Drawing.Size(200, 51);
-            this.groupBox6.TabIndex = 8;
-            this.groupBox6.TabStop = false;
-            this.groupBox6.Text = "接收数据自动写入到文件";
-            // 
-            // cb_record
-            // 
-            this.cb_record.AutoSize = true;
-            this.cb_record.Location = new System.Drawing.Point(15, 23);
-            this.cb_record.Name = "cb_record";
-            this.cb_record.Size = new System.Drawing.Size(48, 16);
-            this.cb_record.TabIndex = 7;
-            this.cb_record.Text = "写入";
-            this.cb_record.UseVisualStyleBackColor = true;
-            // 
-            // tb_record
-            // 
-            this.tb_record.Location = new System.Drawing.Point(60, 20);
-            this.tb_record.Name = "tb_record";
-            this.tb_record.Size = new System.Drawing.Size(134, 21);
-            this.tb_record.TabIndex = 7;
-            this.tb_record.Text = "record.txt";
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label6.ForeColor = System.Drawing.SystemColors.ActiveCaption;
-            this.label6.Location = new System.Drawing.Point(204, 9);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(19, 14);
-            this.label6.TabIndex = 5;
-            this.label6.Text = "？";
-            this.label6.Click += new System.EventHandler(this.label6_Click);
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -634,13 +636,13 @@
             this.splitContainer1.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
+            this.groupBox6.ResumeLayout(false);
+            this.groupBox6.PerformLayout();
             this.groupBox5.ResumeLayout(false);
             this.groupBox5.PerformLayout();
             this.groupBox4.ResumeLayout(false);
             this.groupBox4.PerformLayout();
             this.panel2.ResumeLayout(false);
-            this.groupBox6.ResumeLayout(false);
-            this.groupBox6.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
