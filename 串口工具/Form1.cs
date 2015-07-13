@@ -37,18 +37,25 @@ namespace 串口工具
             //关闭接口
             if (hSerialPort.IsOpen)
             {
-                //1、操作处理
+                //1、操作处理(以下3步顺序很重要)
+                
+                //1.1 设置标志，确保线程退出ReadExisting后 不要再进入read状态
                 uartIsOpen = false;
+                
                 bt_send.Enabled = false;
                 bt_open.Text = "打开串口";
+                
+                //1.2 关闭串口 退出线程的ReadExisting
                 hSerialPort.Close();
+                
                 statusStr = "Closed...";
                 timer_send.Enabled = false; //定时发送功能必须停止
                 bt_send.Enabled = false;    //发送按钮 禁止
                 bt_send.Text = "发送";      //发送按钮 内容复位
                 
-                //2、线程处理
+                //1.3 在线程处于自由态(不挂在硬件接口上的俄时候) 再挂起线程 避免线程异常
                 thRead.Suspend();//接收线程挂起
+                
                 if (cb_record.Checked)
                 {
                     if (stwHandle != null)
